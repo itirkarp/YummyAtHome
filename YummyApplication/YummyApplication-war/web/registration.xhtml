@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Register for Yummy Tummy</title>
+    </h:head>
+    <h:body>
+        <h2>Please register to order food from Yummy in my Tummy</h2>
+        <h:form>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><h:outputLabel value="Email ID"/></td>
+                        <td>
+                            <h:inputText title="Email ID" id="email"
+                                         required="true" 
+                                         requiredMessage="Email ID must not be blank"
+                                         value="#{registrationManagedBean.email}">
+                            </h:inputText>
+                        </td>
+                        <td><h:message for="email" style="color:red"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="Password"/></td>
+                        <td>
+                            <h:inputSecret title="Password" id="password"
+                                        required="true" 
+                                        requiredMessage="Password must not be blank"
+                                        validator="#{registrationManagedBean.validatePasswordPair}"
+                                        value="#{registrationManagedBean.password}">
+                            <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
+                            </h:inputSecret>
+                        </td>
+                        <td><h:message for="password" style="color:red"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="Confirm Password"/></td>
+                        <td>
+                            <h:inputSecret title="ConfirmPassword" id="confirmPassword"
+                                        required="true" binding="#{confirmPassword}"
+                                        requiredMessage="Password confirmation must not be blank"
+                                        value="#{registrationManagedBean.confirmPassword}">
+                            </h:inputSecret>
+                        </td>
+                        <td><h:message for="confirmPassword" style="color:red"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="Name"/></td>
+                        <td>
+                            <h:inputText title="Name" id="name"
+                                        required="true" 
+                                        requiredMessage="Name must not be blank"
+                                        value="#{registrationManagedBean.name}">
+                            </h:inputText>
+                        </td>
+                        <td><h:message for="name" style="color:red"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="Phone Number"/></td>
+                        <td>
+                            <h:inputText title="Phone" id="phone"
+                                        required="true" 
+                                        requiredMessage="Phone Number must not be blank"
+                                        value="#{registrationManagedBean.phone}">
+                            </h:inputText>
+                        </td>
+                        <td><h:message for="phone" style="color:red"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="Address"/></td>
+                        <td>
+                            <h:inputText title="Address" id="address"
+                                        required="true" 
+                                        requiredMessage="Address must not be blank"
+                                        value="#{registrationManagedBean.address}">
+                            </h:inputText>
+                        </td>
+                        <td><h:message for="address" style="color:red"/></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p></p>
+            <h:commandButton id="submit" value="Register" action="#{registrationManagedBean.register()}"/>
+        </h:form>        
+    </h:body>
+</html>
+

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Login to Yummy Tummy</title>
+    </h:head>
+    <h:body>
+        <h2>Please login to Yummy in my Tummy</h2>
+        <h:messages for="login" style="color:red"/>
+        <h:form>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><h:outputLabel value="Email ID"/></td>
+                        <td>
+                            <h:inputText title="Email ID" id="email"
+                                         required="true" 
+                                         requiredMessage="Email ID must not be blank"
+                                         value="#{loginManagedBean.email}">
+                            </h:inputText>
+                        </td>
+                        <td><h:message for="email" style="color:red"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="Password"/></td>
+                        <td>
+                            <h:inputSecret title="Password" id="password"
+                                        required="true" 
+                                        requiredMessage="Password must not be blank"
+                                        value="#{loginManagedBean.password}">
+                            </h:inputSecret>
+                        </td>
+                        <td><h:message for="password" style="color:red"/></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p></p>
+            <h:commandButton id="submit" value="Login" action="#{loginManagedBean.login()}"/>
+        </h:form>        
+    </h:body>
+</html>
+
