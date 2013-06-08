@@ -27,9 +27,10 @@
         </h:dataTable>
         <h3>The order total is: $#{orderManagedBean.orderTotal}</h3>
         <p>
-            Click <h:outputLink value="menu.xhtml">
-                <h:outputText value="here"></h:outputText>
-            </h:outputLink> to edit your order.
+            <h:form>
+                <h:button value="Edit Order" outcome="menu.xhtml"/>
+                <h:commandButton value="Checkout" action="#{orderManagedBean.checkout()}"/>
+            </h:form>
         </p>
     </h:body>
 </html>

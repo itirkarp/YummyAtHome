@@ -59,4 +59,13 @@ public class OrderManagedBean {
         }
         return total;
     }
+    
+    public String checkout() {
+        // Send email with final order
+        // Save order in db
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "checkout";
+    }
 }

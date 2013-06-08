@@ -89,8 +89,6 @@ public class MenuManagedBean implements Serializable {
         for (CartItem cartItem : shoppingCart.getItems()) {
             selectedItems.put(cartItem.getId(), cartItem.quantity.toString());
         }
-        System.out.println("**************");
-        System.out.println(shoppingCart.getItems().size());
     }
     
     public String addToCart() {
