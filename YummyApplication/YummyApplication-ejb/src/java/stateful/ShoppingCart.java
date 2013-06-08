@@ -1,6 +1,7 @@
 package stateful;
 
 import entity.CartItem;
+import entity.MenuItem;
 import facades.MenuItemFacadeLocal;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +21,25 @@ public class ShoppingCart implements ShoppingCartRemote, ShoppingCartLocal {
     public ShoppingCart() {
         items = new ArrayList<CartItem>();
     }
+
+    @Override
+    public List<CartItem> getItems() {
+        return items;
+    }
     
     @Override
     public boolean add(Integer itemid, Integer quantity) {
-        if (menuItemFacade.find(itemid) == null) {
+        MenuItem item = menuItemFacade.find(itemid);
+        if (item == null) {
             return false;
         }
-        items.add(new CartItem(itemid, quantity));
+        items.add(new CartItem(itemid, quantity, item.getName(), item.getPrice()));
         return true;
+    }
+
+    @Override
+    public void clear() {
+        items = new ArrayList<CartItem>();
     }
 
 }

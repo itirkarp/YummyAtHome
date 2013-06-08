@@ -2,12 +2,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <title>Yummy Cart</title>
     </h:head>
     <h:body>
         <h2>These are the items selected for home delivery:</h2>
+        <h:dataTable value="#{orderManagedBean.items}" 
+                     var="menuitem" border="1" width="50%" 
+                     style="border-collapse: collapse; text-align: left;">
+            <h:column>
+                <f:facet name="header">Item</f:facet>
+                #{menuitem.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Quantity</f:facet>
+                #{menuitem.quantity}
+            </h:column>            
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                #{menuitem.price}
+            </h:column>
+        </h:dataTable>
+        <h3>The order total is: $#{orderManagedBean.orderTotal}</h3>
+        <p>
+            Click <h:outputLink value="menu.xhtml">
+                <h:outputText value="here"></h:outputText>
+            </h:outputLink> to edit your order.
+        </p>
     </h:body>
 </html>
 
