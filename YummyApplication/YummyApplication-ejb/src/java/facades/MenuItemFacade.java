@@ -1,6 +1,7 @@
 package facades;
 
 import entity.MenuItem;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +22,12 @@ public class MenuItemFacade extends AbstractFacade<MenuItem> implements MenuItem
 
     public MenuItemFacade() {
         super(MenuItem.class);
+    }
+
+    @Override
+    public List<MenuItem> findByCategory(String category) {
+        return em.createNamedQuery("MenuItem.findByCategory")
+                .setParameter("category", category).getResultList();
     }
     
 }

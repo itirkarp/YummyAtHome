@@ -12,7 +12,7 @@
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
-            <to-view-id>/mainmenu.xhtml</to-view-id>
+            <to-view-id>/menu.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>failure</from-outcome>
@@ -25,11 +25,20 @@
         <from-view-id>/registration.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
-            <to-view-id>/mainmenu.xhtml</to-view-id>
+            <to-view-id>/menu.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>failure</from-outcome>
             <to-view-id>/registration.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>
+        <description>AddToCart</description>
+        <from-view-id>/menu.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/cart.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
 </faces-config>

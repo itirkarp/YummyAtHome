@@ -26,8 +26,7 @@ public class RestaurantUserFacade extends AbstractFacade<RestaurantUser> impleme
 
     @Override
     public RestaurantUser findByEmail(String email) {
-        List<RestaurantUser> users = em.createQuery(
-                "SELECT r FROM RestaurantUser r WHERE r.email = :email")
+        List<RestaurantUser> users = em.createNamedQuery("RestaurantUser.findByEmail")
                 .setParameter("email", email).getResultList();
         if (users.isEmpty()) {
             return null;

@@ -11,7 +11,8 @@ import java.sql.Statement;
  * @author Prakriti
  */
 public class SetupSchema {
-
+    public static enum Category {STARTERS, MAINS, RICE, DRINKS, BREADS};
+    
     public static void main(String[] args) {
         Connection connection = null;
         Statement statement = null;
@@ -37,11 +38,16 @@ public class SetupSchema {
             db.createOrderItemTable();
             
             // Create menu
-            db.createMenuItem("Tandoori Chicken", "Grilled chicken with spices served with onion salad", 20, "Starter");
-            db.createMenuItem("Butter Chicken", "Chicken curry dish with butter and spices", 10, "Main");
-            db.createMenuItem("Mutton Dum Biryani", "Slow cooked chicken and rice with exotic Indian spices served with dahi", 20, "Rice");
-            db.createMenuItem("Jaljeera", "Refreshing drink", 5, "Drinks");
-            db.createMenuItem("Garlic Naan", "Bread prepared in a tandoor with garlic and butter", 3, "Breads");
+            db.createMenuItem("Tandoori Chicken", "Grilled chicken with spices served with onion salad", 20, Category.STARTERS.toString());
+            db.createMenuItem("Seekh Kebab", "Minced mutton skewers", 15, Category.STARTERS.toString());            
+            db.createMenuItem("Butter Chicken", "Chicken curry dish with butter and spices", 10, Category.MAINS.toString());
+            db.createMenuItem("Kadhai Chicken", "Spicy chicken with onions and capsicum", 10, Category.MAINS.toString());
+            db.createMenuItem("Mutton Dum Biryani", "Slow cooked chicken and rice with exotic Indian spices served with dahi", 20, Category.RICE.toString());
+            db.createMenuItem("Jeera Rice", "Rice with cumin and other spices", 10, Category.RICE.toString());
+            db.createMenuItem("Jaljeera", "Refreshing drink", 5, Category.DRINKS.toString());
+            db.createMenuItem("Lassi", "Sweet refreshing drink", 5, Category.DRINKS.toString());
+            db.createMenuItem("Garlic Naan", "Bread prepared in a tandoor with garlic and butter", 3, Category.BREADS.toString());
+            db.createMenuItem("Tandoori Roti", "Flat Bread roasted in a tandoor", 3, Category.BREADS.toString());
             
         } catch (SQLException ex) {
             while (ex != null) {

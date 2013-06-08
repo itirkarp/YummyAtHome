@@ -24,5 +24,7 @@ public interface MenuItemFacadeRemote {
     List<MenuItem> findRange(int[] range);
 
     int count();
+
+    List<MenuItem> findByCategory(String category);
     
 }
