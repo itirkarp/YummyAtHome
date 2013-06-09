@@ -1,9 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package stateless;
 
+import entity.RestaurantUser;
 import javax.ejb.Remote;
 
 /**
@@ -13,6 +10,6 @@ import javax.ejb.Remote;
 @Remote
 public interface LoginBeanRemote {
 
-    boolean login(String email, String password);
+    RestaurantUser login(String email, String password);
     
 }

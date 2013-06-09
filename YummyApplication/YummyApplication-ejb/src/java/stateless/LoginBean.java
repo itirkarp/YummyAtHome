@@ -15,12 +15,12 @@ public class LoginBean implements LoginBeanRemote, LoginBeanLocal {
     private RestaurantUserFacadeLocal restaurantUserFacade;
 
     @Override
-    public boolean login(String email, String password) {
+    public RestaurantUser login(String email, String password) {
         RestaurantUser user = restaurantUserFacade.findByEmail(email);
-        if (user == null) {
-            return false;
+        if (user !=null && user.getPassword().equals(password)){
+            return user;
         }
-        return user.getPassword().equals(password);
+        return null;
     }
 
 }
