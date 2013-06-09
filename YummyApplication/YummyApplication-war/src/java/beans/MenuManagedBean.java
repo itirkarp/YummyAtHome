@@ -12,8 +12,6 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -92,6 +90,7 @@ public class MenuManagedBean implements Serializable {
     }
     
     public String addToCart() {
+        // If all quantities are 0 don't allow adding to cart
         shoppingCart.clear();
         for (Map.Entry<Integer, String> entry : selectedItems.entrySet()) {
             Integer itemid = entry.getKey();

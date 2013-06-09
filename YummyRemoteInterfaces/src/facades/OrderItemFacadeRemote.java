@@ -1,5 +1,6 @@
 package facades;
 
+import entity.CartItem;
 import entity.OrderItem;
 import java.util.List;
 import javax.ejb.Remote;

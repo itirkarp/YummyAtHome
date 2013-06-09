@@ -1,16 +1,17 @@
 
-import beans.MenuManagedBean;
+import beans.LoginManagedBean;
 import entity.CartItem;
+import facades.RestaurantOrderFacadeRemote;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import stateful.ShoppingCartLocal;
 import stateful.ShoppingCartRemote;
 
 /**
@@ -20,10 +21,13 @@ import stateful.ShoppingCartRemote;
 @Named(value = "orderManagedBean")
 @RequestScoped
 public class OrderManagedBean {
-
+    @EJB
+    private RestaurantOrderFacadeRemote restaurantOrderFacade;
     @EJB
     private ShoppingCartRemote shoppingCart;
     private List<CartItem> items;
+    @Inject
+    LoginManagedBean loginBean;
 
     public OrderManagedBean() {
         items = new ArrayList<CartItem>();
@@ -61,11 +65,13 @@ public class OrderManagedBean {
     }
     
     public String checkout() {
-        // Send email with final order
-        // Save order in db
+        // TODO: Send email with final order
+        restaurantOrderFacade.saveOrder(items, loginBean.getCurrentUser());
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         HttpSession session = request.getSession();
         session.invalidate();
         return "checkout";
     }
+    
+    
 }

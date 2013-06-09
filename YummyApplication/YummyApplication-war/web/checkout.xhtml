@@ -2,13 +2,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Yummy Checkout</title>
     </h:head>
     <h:body>
         <h2>Checkout</h2>
         <h4>Your order has been placed.</h4>
+        <h3>The order is:</h3>
+        <ui:repeat value="#{orderManagedBean.items}" var="item">
+            <p>#{item.name}  -  #{item.quantity} </p>
+        </ui:repeat>
+        <h3>The order total is: $#{orderManagedBean.orderTotal}</h3>
         An email has been sent to you with details about your delivery order.<br/>
         Thanks for ordering from Yummy in my Tummy!<br></br><br/>
         Click <h:outputLink value="login.xhtml">here</h:outputLink> to order again.

@@ -45,6 +45,12 @@ public class OrderItem implements Serializable {
     public OrderItem() {
     }
 
+    public OrderItem(Integer quantity, RestaurantOrder orderid, MenuItem itemid) {
+        this.quantity = quantity;
+        this.orderid = orderid;
+        this.itemid = itemid;
+    }
+
     public OrderItem(Integer id) {
         this.id = id;
     }

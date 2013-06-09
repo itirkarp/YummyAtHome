@@ -1,6 +1,8 @@
 package facades;
 
+import entity.CartItem;
 import entity.RestaurantOrder;
+import entity.RestaurantUser;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -24,5 +26,7 @@ public interface RestaurantOrderFacadeLocal {
     List<RestaurantOrder> findRange(int[] range);
 
     int count();
+
+    void saveOrder(List<CartItem> items, RestaurantUser user);
     
 }
