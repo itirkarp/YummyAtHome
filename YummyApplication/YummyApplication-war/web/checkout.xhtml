@@ -11,10 +11,10 @@
         <h2>Checkout</h2>
         <h4>Your order has been placed.</h4>
         <h3>The order is:</h3>
-        <ui:repeat value="#{orderManagedBean.items}" var="item">
+        <ui:repeat value="#{menuManagedBean.cartItems}" var="item">
             <p>#{item.name}  -  #{item.quantity} </p>
         </ui:repeat>
-        <h3>The order total is: $#{orderManagedBean.orderTotal}</h3>
+        <h3>The order total is: $#{menuManagedBean.orderTotal}</h3>
         An email has been sent to you with details about your delivery order.<br/>
         Thanks for ordering from Yummy in my Tummy!<br></br><br/>
         Click <h:outputLink value="login.xhtml">here</h:outputLink> to order again.

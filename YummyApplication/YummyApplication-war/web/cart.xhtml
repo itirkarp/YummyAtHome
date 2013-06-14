@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h2>These are the items selected for home delivery:</h2>
-        <h:dataTable value="#{orderManagedBean.items}" 
+        <h:dataTable value="#{menuManagedBean.cartItems}" 
                      var="menuitem" border="1" width="50%" 
                      style="border-collapse: collapse; text-align: left;">
             <h:column>
@@ -25,11 +25,11 @@
                 #{menuitem.price}
             </h:column>
         </h:dataTable>
-        <h3>The order total is: $#{orderManagedBean.orderTotal}</h3>
+        <h3>The order total is: $#{menuManagedBean.orderTotal}</h3>
         <p>
             <h:form>
                 <h:button value="Edit Order" outcome="menu.xhtml"/>
-                <h:commandButton value="Checkout" action="#{orderManagedBean.checkout()}"/>
+                <h:commandButton value="Checkout" action="#{menuManagedBean.checkout()}"/>
             </h:form>
         </p>
     </h:body>
