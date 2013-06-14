@@ -4,6 +4,7 @@
  */
 package stateless;
 
+import entity.RestaurantUser;
 import javax.ejb.Remote;
 
 /**
@@ -13,6 +14,6 @@ import javax.ejb.Remote;
 @Remote
 public interface RegistrationBeanRemote {
 
-    boolean register(String email, String password, String phone, String name, String address);
+    RestaurantUser register(String email, String password, String phone, String name, String address);
     
 }

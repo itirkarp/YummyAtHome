@@ -4,6 +4,7 @@
  */
 package stateless;
 
+import entity.RestaurantUser;
 import javax.ejb.Local;
 
 /**
@@ -13,6 +14,6 @@ import javax.ejb.Local;
 @Local
 public interface RegistrationBeanLocal {
 
-    boolean register(String email, String password, String phone, String name, String address);
+    RestaurantUser register(String email, String password, String phone, String name, String address);
     
 }

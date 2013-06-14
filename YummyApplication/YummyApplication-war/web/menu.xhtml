@@ -11,6 +11,7 @@
         <div style="margin-left: 2%;">
             <h2>Order home delivery from Yummy in my Tummy</h2>
             <h3>Enter quantities for items desired from the menu and click Add to Order</h3>
+            <h:messages style="color:red" />
             <h:form>
                 <ui:repeat value="#{menuManagedBean.categories}" var="category">
                     <h4>#{category.label}:</h4>

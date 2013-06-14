@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -92,12 +93,19 @@ public class MenuManagedBean implements Serializable {
     public String addToCart() {
         // If all quantities are 0 don't allow adding to cart
         shoppingCart.clear();
+        int numberSelected = 0;
         for (Map.Entry<Integer, String> entry : selectedItems.entrySet()) {
             Integer itemid = entry.getKey();
             Integer quantity = Integer.parseInt(entry.getValue());
             if (quantity != null && quantity > 0) {
                 shoppingCart.add(itemid, quantity);
+                numberSelected++;
             }
+        }
+        if (numberSelected == 0) {
+            FacesContext.getCurrentInstance().addMessage(null, 
+                    new FacesMessage("Please select some items to add."));
+            return "failure";
         }
         return "success";
     }

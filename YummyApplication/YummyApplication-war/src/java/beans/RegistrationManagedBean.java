@@ -1,14 +1,16 @@
 package beans;
 
+import entity.RestaurantUser;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.inject.Inject;
 import stateless.RegistrationBeanRemote;
 
 /**
@@ -16,10 +18,12 @@ import stateless.RegistrationBeanRemote;
  * @author Prakriti
  */
 @Named(value = "registrationManagedBean")
-@SessionScoped
+@RequestScoped
 public class RegistrationManagedBean implements Serializable {
     @EJB
     private RegistrationBeanRemote registrationBean;
+    @Inject
+    private LoginManagedBean loginBean;
 
     private String email;
     private String password;
@@ -80,11 +84,13 @@ public class RegistrationManagedBean implements Serializable {
     }
     
     public String register() {
-        if (registrationBean.register(email, password, phone, name, address)) {
+        RestaurantUser user = registrationBean.register(email, password, phone, name, address);
+        if (user != null) {
+            loginBean.setCurrentUser(user);
             return "success";
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, 
-                    new FacesMessage("Registration failed. This email ID is already registered"));
+            FacesContext.getCurrentInstance().addMessage("registration", 
+                    new FacesMessage("Registration failed. This email ID is already registered."));
             return "failure";
         }
     }

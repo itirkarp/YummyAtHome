@@ -15,14 +15,14 @@ public class RegistrationBean implements RegistrationBeanRemote, RegistrationBea
     private RestaurantUserFacadeLocal restaurantUserFacade;
 
     @Override
-    public boolean register(String email, String password, String phone, 
+    public RestaurantUser register(String email, String password, String phone, 
     String name, String address) {
         if (restaurantUserFacade.findByEmail(email)!= null) {
-            return false;
+            return null;
         }
         RestaurantUser user = new RestaurantUser(name, password, email, phone, address);
         restaurantUserFacade.create(user);
-        return true;
+        return user;
     }
 
 
