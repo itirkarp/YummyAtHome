@@ -37,7 +37,7 @@ public class RestaurantOrderFacade extends AbstractFacade<RestaurantOrder> imple
     }
 
     @Override
-    public void saveOrder(List<CartItem> items, RestaurantUser user) {
+    public Integer saveOrder(List<CartItem> items, RestaurantUser user) {
         RestaurantOrder order = new RestaurantOrder();
         order.setOrderdate(new Date());
         order.setUserid(user);
@@ -52,5 +52,7 @@ public class RestaurantOrderFacade extends AbstractFacade<RestaurantOrder> imple
         }
         order.setTotal(total);
         edit(order);
+        em.flush();
+        return order.getId();
     }
 }

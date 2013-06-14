@@ -27,5 +27,5 @@ public interface RestaurantOrderFacadeRemote {
 
     int count();
 
-    void saveOrder(List<CartItem> items, RestaurantUser user);
+    Integer saveOrder(List<CartItem> items, RestaurantUser user);
 }
