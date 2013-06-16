@@ -10,7 +10,9 @@ import javax.persistence.PersistenceContext;
  * @author Prakriti
  */
 @Stateless
-public class OrderItemFacade extends AbstractFacade<OrderItem> implements OrderItemFacadeLocal, facades.OrderItemFacadeRemote {
+public class OrderItemFacade extends AbstractFacade<OrderItem> 
+    implements OrderItemFacadeLocal, facades.OrderItemFacadeRemote {
+    
     @PersistenceContext(unitName = "YummyApplication-ejbPU")
     private EntityManager em;
 

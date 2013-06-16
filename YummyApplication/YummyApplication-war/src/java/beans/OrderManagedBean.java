@@ -1,5 +1,5 @@
+package beans;
 
-import beans.LoginManagedBean;
 import entity.CartItem;
 import facades.RestaurantOrderFacadeRemote;
 import java.util.ArrayList;
@@ -58,12 +58,8 @@ public class OrderManagedBean {
 
     @PostConstruct
     public void loadCart() {
-        // works only if menumanagedbean is request scoped
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        MenuManagedBean menuBean = (MenuManagedBean) context.getApplication()
-//                .evaluateExpressionGet(context, "#{menuManagedBean}", MenuManagedBean.class);
-//        items = menuBean.getShoppingCart().getItems();
-        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        HttpServletRequest request = (HttpServletRequest) FacesContext
+                .getCurrentInstance().getExternalContext().getRequest();
         HttpSession session = request.getSession();
         shoppingCart = (ShoppingCartRemote) session.getAttribute("shoppingCart");
         if (shoppingCart != null) {
@@ -80,12 +76,15 @@ public class OrderManagedBean {
     }
     
     public String checkout() {
-        Integer orderId = restaurantOrderFacade.saveOrder(items, loginBean.getCurrentUser());
+        Integer orderId = restaurantOrderFacade.saveOrder(items, 
+                loginBean.getCurrentUser());
         try {
             sendJMSMessageToYummyqueue(orderId.toString());
         } catch (JMSException ex) {
-            System.out.println("Could not send message to order email queue: " + ex.getMessage());
-            Logger.getLogger(OrderManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Could not send message to order email queue: " 
+                    + ex.getMessage());
+            Logger.getLogger(OrderManagedBean.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
         HttpServletRequest request = (HttpServletRequest) FacesContext
                 .getCurrentInstance().getExternalContext().getRequest();
@@ -101,7 +100,8 @@ public class OrderManagedBean {
         return tm;
     }
 
-    private void sendJMSMessageToYummyqueue(Object messageData) throws JMSException {
+    private void sendJMSMessageToYummyqueue(Object messageData) 
+            throws JMSException {
         Connection connection = null;
         Session session = null;
         try {
@@ -114,7 +114,8 @@ public class OrderManagedBean {
                 try {
                     session.close();
                 } catch (JMSException e) {
-                    Logger.getLogger(this.getClass().getName()).log(Level.WARNING, "Cannot close session", e);
+                    Logger.getLogger(this.getClass().getName()).log(Level.WARNING, 
+                            "Cannot close session", e);
                 }
             }
             if (connection != null) {

@@ -11,7 +11,9 @@ import javax.persistence.PersistenceContext;
  * @author Prakriti
  */
 @Stateless
-public class RestaurantUserFacade extends AbstractFacade<RestaurantUser> implements RestaurantUserFacadeLocal, facades.RestaurantUserFacadeRemote {
+public class RestaurantUserFacade extends AbstractFacade<RestaurantUser> 
+    implements RestaurantUserFacadeLocal, facades.RestaurantUserFacadeRemote {
+    
     @PersistenceContext(unitName = "YummyApplication-ejbPU")
     private EntityManager em;
 

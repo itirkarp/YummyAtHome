@@ -33,7 +33,8 @@ public class ShoppingCart implements ShoppingCartRemote, ShoppingCartLocal {
         if (item == null) {
             return false;
         }
-        items.add(new CartItem(itemid, quantity, item.getName(), item.getPrice()));
+        items.add(new CartItem(itemid, quantity, item.getName(), 
+                item.getPrice()));
         return true;
     }
 

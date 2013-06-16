@@ -63,9 +63,11 @@ public class MenuManagedBean implements Serializable {
         
     @PostConstruct
     public void init() {
-        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        HttpServletRequest request = (HttpServletRequest) 
+                FacesContext.getCurrentInstance().getExternalContext().getRequest();
         HttpSession session = request.getSession();
-        ShoppingCartRemote sessionCart = (ShoppingCartRemote) session.getAttribute("shoppingCart");
+        ShoppingCartRemote sessionCart = (ShoppingCartRemote) 
+                session.getAttribute("shoppingCart");
         if (sessionCart != null) {
             shoppingCart = sessionCart;
         } else {

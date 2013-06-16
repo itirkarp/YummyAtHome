@@ -1,9 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
-
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -27,13 +22,20 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "RESTAURANTUSER")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RestaurantUser.findAll", query = "SELECT r FROM RestaurantUser r"),
-    @NamedQuery(name = "RestaurantUser.findById", query = "SELECT r FROM RestaurantUser r WHERE r.id = :id"),
-    @NamedQuery(name = "RestaurantUser.findByName", query = "SELECT r FROM RestaurantUser r WHERE r.name = :name"),
-    @NamedQuery(name = "RestaurantUser.findByPassword", query = "SELECT r FROM RestaurantUser r WHERE r.password = :password"),
-    @NamedQuery(name = "RestaurantUser.findByEmail", query = "SELECT r FROM RestaurantUser r WHERE r.email = :email"),
-    @NamedQuery(name = "RestaurantUser.findByPhone", query = "SELECT r FROM RestaurantUser r WHERE r.phone = :phone"),
-    @NamedQuery(name = "RestaurantUser.findByAddress", query = "SELECT r FROM RestaurantUser r WHERE r.address = :address")})
+    @NamedQuery(name = "RestaurantUser.findAll", 
+        query = "SELECT r FROM RestaurantUser r"),
+    @NamedQuery(name = "RestaurantUser.findById", 
+        query = "SELECT r FROM RestaurantUser r WHERE r.id = :id"),
+    @NamedQuery(name = "RestaurantUser.findByName", 
+        query = "SELECT r FROM RestaurantUser r WHERE r.name = :name"),
+    @NamedQuery(name = "RestaurantUser.findByPassword", 
+        query = "SELECT r FROM RestaurantUser r WHERE r.password = :password"),
+    @NamedQuery(name = "RestaurantUser.findByEmail", 
+        query = "SELECT r FROM RestaurantUser r WHERE r.email = :email"),
+    @NamedQuery(name = "RestaurantUser.findByPhone", 
+        query = "SELECT r FROM RestaurantUser r WHERE r.phone = :phone"),
+    @NamedQuery(name = "RestaurantUser.findByAddress", 
+        query = "SELECT r FROM RestaurantUser r WHERE r.address = :address")})
 public class RestaurantUser implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,18 +55,16 @@ public class RestaurantUser implements Serializable {
     private String address;
     @OneToMany(mappedBy = "userid")
     private Collection<RestaurantOrder> restaurantOrderCollection;
-
     public RestaurantUser() {
     }
-
-    public RestaurantUser(String name, String password, String email, String phone, String address) {
+    public RestaurantUser(String name, String password, String email, 
+            String phone, String address) {
         this.name = name;
         this.password = password;
         this.email = email;
         this.phone = phone;
         this.address = address;
     }
-
     public RestaurantUser(Integer id) {
         this.id = id;
     }
@@ -122,7 +122,8 @@ public class RestaurantUser implements Serializable {
         return restaurantOrderCollection;
     }
 
-    public void setRestaurantOrderCollection(Collection<RestaurantOrder> restaurantOrderCollection) {
+    public void setRestaurantOrderCollection(Collection<RestaurantOrder> 
+            restaurantOrderCollection) {
         this.restaurantOrderCollection = restaurantOrderCollection;
     }
 
@@ -139,7 +140,8 @@ public class RestaurantUser implements Serializable {
             return false;
         }
         RestaurantUser other = (RestaurantUser) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && 
+                !this.id.equals(other.id))) {
             return false;
         }
         return true;

@@ -43,7 +43,6 @@ public class MenuItem implements Serializable {
     private String name;
     @Column(name = "DESCRIPTION")
     private String description;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PRICE")
     private float price;
     @Column(name = "CATEGORY")
@@ -109,7 +108,8 @@ public class MenuItem implements Serializable {
             return false;
         }
         MenuItem other = (MenuItem) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && 
+                !this.id.equals(other.id))) {
             return false;
         }
         return true;

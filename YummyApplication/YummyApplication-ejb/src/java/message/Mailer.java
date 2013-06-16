@@ -15,7 +15,8 @@ import javax.mail.internet.MimeMessage;
  */
 public class Mailer {
     
-    public static void sendOrderEmail(Session mailSession, String emailId, Integer id, float total) {
+    public static void sendOrderEmail(Session mailSession, String emailId, 
+            Integer id, float total) {
         try {
             MimeMessage email = new MimeMessage(mailSession);
             email.setRecipients(MimeMessage.RecipientType.TO,
@@ -30,7 +31,8 @@ public class Mailer {
             System.out.println("Order email was sent successfully");
         } catch (MessagingException ex) {
             System.out.println("Could not send order email: " + ex.getMessage());
-            Logger.getLogger(OrderEmailBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderEmailBean.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
     }    
 }

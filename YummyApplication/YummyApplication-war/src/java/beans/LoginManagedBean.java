@@ -56,7 +56,8 @@ public class LoginManagedBean implements Serializable {
             return "success";
         } else {
             FacesContext.getCurrentInstance().addMessage("login",
-                    new FacesMessage("The credentials were incorrect. Please try again"));
+                    new FacesMessage("The credentials were incorrect. "
+                    + "Please try again"));
             return "failure";
         }
     }

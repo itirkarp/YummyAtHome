@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -15,10 +16,12 @@
             <h:form>
                 <ui:repeat value="#{menuManagedBean.categories}" var="category">
                     <h4>#{category.label}:</h4>
-                    <table border="1" width="50%" style="border-collapse: collapse; text-align: left;">
+                    <table border="1" width="50%" 
+                           style="border-collapse: collapse; text-align: left;">
                         <tbody>
                             <tr><th>Item</th><th>Price</th><th>Quantity</th></tr>
-                            <ui:repeat value="#{menuManagedBean.menu.get(category)}" var="menuitem">
+                            <ui:repeat value="#{menuManagedBean.menu.get(category)}" 
+                                       var="menuitem">
                                 <tr>
                                     <td>#{menuitem.id}. 
                                         <strong>#{menuitem.name}</strong><br/>
@@ -35,7 +38,8 @@
                         </tbody>
                     </table><br/>
                 </ui:repeat>
-                <h:commandButton id="submit" value="Add to Order" action="#{menuManagedBean.addToCart()}"/>
+                <h:commandButton id="submit" value="Add to Order" 
+                                 action="#{menuManagedBean.addToCart()}"/>
                 <p></p>
             </h:form>
         </div>

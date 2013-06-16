@@ -17,7 +17,7 @@
                         <td>
                             <h:inputText title="Email ID" id="email"
                                          required="true" 
-                                         requiredMessage="Email ID must not be blank"
+                                    requiredMessage="Email ID must not be blank"
                                          value="#{loginManagedBean.email}">
                             </h:inputText>
                         </td>
@@ -28,7 +28,7 @@
                         <td>
                             <h:inputSecret title="Password" id="password"
                                         required="true" 
-                                        requiredMessage="Password must not be blank"
+                                    requiredMessage="Password must not be blank"
                                         value="#{loginManagedBean.password}">
                             </h:inputSecret>
                         </td>
@@ -37,9 +37,11 @@
                 </tbody>
             </table>
             <p></p>
-            <h:commandButton id="submit" value="Login" action="#{loginManagedBean.login()}"/>
+            <h:commandButton id="submit" value="Login" 
+                             action="#{loginManagedBean.login()}"/>
         </h:form>        
-        <p>New User? Register <h:outputLink value="registration.xhtml">here</h:outputLink>.</p>
+        <p>New User? Register 
+            <h:outputLink value="registration.xhtml">here</h:outputLink>.</p>
     </h:body>
 </html>
 

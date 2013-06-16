@@ -30,7 +30,7 @@
                             <h:inputSecret title="Password" id="password"
                                         required="true" 
                                         requiredMessage="Password must not be blank"
-                                        validator="#{registrationManagedBean.validatePasswordPair}"
+                                validator="#{registrationManagedBean.validatePasswordPair}"
                                         value="#{registrationManagedBean.password}">
                             <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
                             </h:inputSecret>
@@ -42,8 +42,8 @@
                         <td>
                             <h:inputSecret title="ConfirmPassword" id="confirmPassword"
                                         required="true" binding="#{confirmPassword}"
-                                        requiredMessage="Password confirmation must not be blank"
-                                        value="#{registrationManagedBean.confirmPassword}">
+                                requiredMessage="Password confirmation must not be blank"
+                                    value="#{registrationManagedBean.confirmPassword}">
                             </h:inputSecret>
                         </td>
                         <td><h:message for="confirmPassword" style="color:red"/></td>
@@ -64,7 +64,7 @@
                         <td>
                             <h:inputText title="Phone" id="phone"
                                         required="true" 
-                                        requiredMessage="Phone Number must not be blank"
+                                    requiredMessage="Phone Number must not be blank"
                                         value="#{registrationManagedBean.phone}">
                             </h:inputText>
                         </td>
@@ -84,7 +84,8 @@
                 </tbody>
             </table>
             <p></p>
-            <h:commandButton id="submit" value="Register" action="#{registrationManagedBean.register()}"/>
+            <h:commandButton id="submit" value="Register" 
+                             action="#{registrationManagedBean.register()}"/>
         </h:form>        
     </h:body>
 </html>

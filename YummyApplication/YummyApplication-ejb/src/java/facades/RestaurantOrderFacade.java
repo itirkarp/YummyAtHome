@@ -17,7 +17,9 @@ import javax.persistence.PersistenceContext;
  * @author Prakriti
  */
 @Stateless
-public class RestaurantOrderFacade extends AbstractFacade<RestaurantOrder> implements RestaurantOrderFacadeLocal, facades.RestaurantOrderFacadeRemote {
+public class RestaurantOrderFacade extends AbstractFacade<RestaurantOrder> 
+    implements RestaurantOrderFacadeLocal, facades.RestaurantOrderFacadeRemote {
+    
     @EJB
     private OrderItemFacadeLocal orderItemFacade;
     @EJB

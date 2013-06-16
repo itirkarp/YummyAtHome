@@ -11,7 +11,8 @@ import javax.persistence.PersistenceContext;
  * @author Prakriti
  */
 @Stateless
-public class MenuItemFacade extends AbstractFacade<MenuItem> implements MenuItemFacadeLocal, MenuItemFacadeRemote {
+public class MenuItemFacade extends AbstractFacade<MenuItem> 
+    implements MenuItemFacadeLocal, MenuItemFacadeRemote {
     @PersistenceContext(unitName = "YummyApplication-ejbPU")
     private EntityManager em;
 

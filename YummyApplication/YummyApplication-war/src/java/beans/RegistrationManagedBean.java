@@ -84,13 +84,15 @@ public class RegistrationManagedBean implements Serializable {
     }
     
     public String register() {
-        RestaurantUser user = registrationBean.register(email, password, phone, name, address);
+        RestaurantUser user = registrationBean.register(email, password, phone, 
+                name, address);
         if (user != null) {
             loginBean.setCurrentUser(user);
             return "success";
         } else {
             FacesContext.getCurrentInstance().addMessage("registration", 
-                    new FacesMessage("Registration failed. This email ID is already registered."));
+                    new FacesMessage("Registration failed. "
+                    + "This email ID is already registered."));
             return "failure";
         }
     }

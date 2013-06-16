@@ -28,10 +28,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "RESTAURANTORDER")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RestaurantOrder.findAll", query = "SELECT r FROM RestaurantOrder r"),
-    @NamedQuery(name = "RestaurantOrder.findById", query = "SELECT r FROM RestaurantOrder r WHERE r.id = :id"),
-    @NamedQuery(name = "RestaurantOrder.findByOrderdate", query = "SELECT r FROM RestaurantOrder r WHERE r.orderdate = :orderdate"),
-    @NamedQuery(name = "RestaurantOrder.findByTotal", query = "SELECT r FROM RestaurantOrder r WHERE r.total = :total")})
+    @NamedQuery(name = "RestaurantOrder.findAll", 
+        query = "SELECT r FROM RestaurantOrder r"),
+    @NamedQuery(name = "RestaurantOrder.findById", 
+        query = "SELECT r FROM RestaurantOrder r WHERE r.id = :id"),
+    @NamedQuery(name = "RestaurantOrder.findByOrderdate", 
+        query = "SELECT r FROM RestaurantOrder r WHERE r.orderdate = :orderdate"),
+    @NamedQuery(name = "RestaurantOrder.findByTotal", 
+        query = "SELECT r FROM RestaurantOrder r WHERE r.total = :total")})
 public class RestaurantOrder implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,7 +46,6 @@ public class RestaurantOrder implements Serializable {
     @Column(name = "ORDERDATE")
     @Temporal(TemporalType.DATE)
     private Date orderdate;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "TOTAL")
     private float total;
     @OneToMany(mappedBy = "orderid")
@@ -112,7 +115,8 @@ public class RestaurantOrder implements Serializable {
             return false;
         }
         RestaurantOrder other = (RestaurantOrder) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && 
+                !this.id.equals(other.id))) {
             return false;
         }
         return true;

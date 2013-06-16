@@ -23,9 +23,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ORDERITEM")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "OrderItem.findAll", query = "SELECT o FROM OrderItem o"),
-    @NamedQuery(name = "OrderItem.findById", query = "SELECT o FROM OrderItem o WHERE o.id = :id"),
-    @NamedQuery(name = "OrderItem.findByQuantity", query = "SELECT o FROM OrderItem o WHERE o.quantity = :quantity")})
+    @NamedQuery(name = "OrderItem.findAll", 
+        query = "SELECT o FROM OrderItem o"),
+    @NamedQuery(name = "OrderItem.findById", 
+        query = "SELECT o FROM OrderItem o WHERE o.id = :id"),
+    @NamedQuery(name = "OrderItem.findByQuantity", 
+        query = "SELECT o FROM OrderItem o WHERE o.quantity = :quantity")})
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -100,7 +103,8 @@ public class OrderItem implements Serializable {
             return false;
         }
         OrderItem other = (OrderItem) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && 
+                !this.id.equals(other.id))) {
             return false;
         }
         return true;

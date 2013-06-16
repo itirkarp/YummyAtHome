@@ -48,15 +48,9 @@ public class CheckLoginFilter implements Filter {
         }
     }
 
-    /**
-     * Destroy method for this filter
-     */
     public void destroy() {        
     }
 
-    /**
-     * Init method for this filter
-     */
     public void init(FilterConfig filterConfig) {        
         this.filterConfig = filterConfig;
     }
